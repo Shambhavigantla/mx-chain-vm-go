@@ -1,0 +1,2095 @@
+{
+  "rootFolder": "/home/divesh/Desktop/finaltest1dev/shannu/mx-chain-vm-go",
+  "analyzedAt": "2026-05-15T07:19:39.717Z",
+  "rootStructure": [
+    {
+      "name": ".github",
+      "type": "dir"
+    },
+    {
+      "name": ".gitignore",
+      "type": "file",
+      "size": 569,
+      "lines": 43
+    },
+    {
+      "name": "LICENSE",
+      "type": "file",
+      "size": 35149,
+      "lines": 675
+    },
+    {
+      "name": "Makefile",
+      "type": "file",
+      "size": 8430,
+      "lines": 196
+    },
+    {
+      "name": "README.md",
+      "type": "file",
+      "size": 721,
+      "lines": 10
+    },
+    {
+      "name": "cmd",
+      "type": "dir"
+    },
+    {
+      "name": "codecov.yml",
+      "type": "file",
+      "size": 224,
+      "lines": 11
+    },
+    {
+      "name": "config",
+      "type": "dir"
+    },
+    {
+      "name": "crypto",
+      "type": "dir"
+    },
+    {
+      "name": "executor",
+      "type": "dir"
+    },
+    {
+      "name": "fuzz",
+      "type": "dir"
+    },
+    {
+      "name": "go.mod",
+      "type": "file",
+      "size": 2511,
+      "lines": 56
+    },
+    {
+      "name": "go.sum",
+      "type": "file",
+      "size": 18378,
+      "lines": 188
+    },
+    {
+      "name": "integrationTests",
+      "type": "dir"
+    },
+    {
+      "name": "math",
+      "type": "dir"
+    },
+    {
+      "name": "mock",
+      "type": "dir"
+    },
+    {
+      "name": "overview.json",
+      "type": "file",
+      "size": 48172,
+      "lines": 1864
+    },
+    {
+      "name": "overview_architecture.puml",
+      "type": "file",
+      "size": 246,
+      "lines": 7
+    },
+    {
+      "name": "scenario",
+      "type": "dir"
+    },
+    {
+      "name": "sonar-project.properties",
+      "type": "file",
+      "size": 97,
+      "lines": 2
+    },
+    {
+      "name": "test",
+      "type": "dir"
+    },
+    {
+      "name": "testcommon",
+      "type": "dir"
+    },
+    {
+      "name": "vmhost",
+      "type": "dir"
+    },
+    {
+      "name": "wasmer2",
+      "type": "dir"
+    }
+  ],
+  "rootFileSnippets": {
+    "LICENSE": [
+      "GNU GENERAL PUBLIC LICENSE",
+      "Version 3, 29 June 2007",
+      "",
+      "Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>",
+      "Everyone is permitted to copy and distribute verbatim copies",
+      "of this license document, but changing it is not allowed.",
+      "",
+      "Preamble",
+      "",
+      "The GNU General Public License is a free, copyleft license for"
+    ],
+    "Makefile": [
+      ".PHONY: test test-short build vmserver clean",
+      "",
+      "VM_VERSION := $(shell git describe --tags --long --dirty --always)",
+      "",
+      "clean:",
+      "go clean -cache -testcache",
+      "",
+      "build:",
+      "go build ./...",
+      ""
+    ],
+    "README.md": [
+      "# wasm-vm",
+      "",
+      "[![](https://img.shields.io/badge/made%20by-MultiversX-blue.svg)](http://multiversx.com/)",
+      "![Build](https://github.com/multiversx/mx-chain-vm-go/actions/workflows/build-test.yml/badge.svg?branch=master)",
+      "[![Go Report Card](https://goreportcard.com/badge/github.com/multiversx/mx-chain-vm-go)](https://goreportcard.com/report/github.com/multiversx/mx-chain-vm-go)",
+      "[![LoC](https://tokei.rs/b1/github/multiversx/mx-chain-vm-go?category=code)](https://github.com/multiversx/mx-chain-vm-go)",
+      "[![codecov](https://codecov.io/gh/multiversx/mx-chain-vm-go/branch/master/graph/badge.svg?token=MYS5EDASOJ)](https://codecov.io/gh/multiversx/mx-chain-vm-go)",
+      "",
+      "WASM-based Virtual Machine for running MultiversX Smart Contracts.",
+      ""
+    ],
+    "codecov.yml": [
+      "ignore:",
+      "- \"**/*.pb.go\"",
+      "- \"**testInitializerInputs.go\"",
+      "- \"**testInitializerVMOutput.go\"",
+      "- \"**hosttest/**\"",
+      "- \"**mock/**\"",
+      "- \"**scenario/**\"",
+      "- \"**test/**\"",
+      "- \"**testcommon/**\"",
+      "- \"**testgen/**\""
+    ],
+    "go.mod": [
+      "module github.com/multiversx/mx-chain-vm-go",
+      "",
+      "go 1.23",
+      "",
+      "require (",
+      "github.com/awalterschulze/gographviz v2.0.3+incompatible",
+      "github.com/btcsuite/btcd/btcec/v2 v2.3.2",
+      "github.com/btcsuite/btcd/chaincfg/chainhash v1.0.1",
+      "github.com/gogo/protobuf v1.3.2",
+      "github.com/mitchellh/mapstructure v1.5.0"
+    ],
+    "go.sum": [
+      "github.com/TwiN/go-color v1.1.0 h1:yhLAHgjp2iAxmNjDiVb6Z073NE65yoaPlcki1Q22yyQ=",
+      "github.com/TwiN/go-color v1.1.0/go.mod h1:aKVf4e1mD4ai2FtPifkDPP5iyoCwiK08YGzGwerjKo0=",
+      "github.com/aead/siphash v1.0.1/go.mod h1:Nywa3cDsYNNK3gaciGTWPwHt0wlpNV15vwmswBAUSII=",
+      "github.com/awalterschulze/gographviz v2.0.3+incompatible h1:9sVEXJBJLwGX7EQVhLm2elIKCm7P2YHFC8v6096G09E=",
+      "github.com/awalterschulze/gographviz v2.0.3+incompatible/go.mod h1:GEV5wmg4YquNw7v1kkyoX9etIk8yVmXj+AkDHuuETHs=",
+      "github.com/btcsuite/btcd v0.20.1-beta/go.mod h1:wVuoA8VJLEcwgqHBwHmzLRazpKxTv13Px/pDuV7OomQ=",
+      "github.com/btcsuite/btcd v0.22.0-beta.0.20220111032746-97732e52810c/go.mod h1:tjmYdS6MLJ5/s0Fj4DbLgSbDHbEqLJrtnHecBFkdz5M=",
+      "github.com/btcsuite/btcd v0.23.0/go.mod h1:0QJIIN1wwIXF/3G/m87gIwGniDMDQqjVn4SZgnFpsYY=",
+      "github.com/btcsuite/btcd/btcec/v2 v2.1.0/go.mod h1:2VzYrv4Gm4apmbVVsSq5bqf1Ec8v56E48Vt0Y/umPgA=",
+      "github.com/btcsuite/btcd/btcec/v2 v2.1.3/go.mod h1:ctjw4H1kknNJmRN4iP1R7bTQ+v3GJkZBd6mui8ZsAZE="
+    ],
+    "overview.json": [
+      "{",
+      "\"rootFolder\": \"/home/divesh/Desktop/finaltest1dev/shannu/mx-chain-vm-go-NewArc\",",
+      "\"analyzedAt\": \"2026-05-15T07:03:34.359Z\",",
+      "\"rootStructure\": [",
+      "{",
+      "\"name\": \".github\",",
+      "\"type\": \"dir\"",
+      "},",
+      "{",
+      "\"name\": \".gitignore\","
+    ],
+    "overview_architecture.puml": [
+      "@startuml",
+      "' Generated by SASVA Maria on 2026-05-15T07:03:34.756Z",
+      "' ERROR: Diagram generation failed",
+      "",
+      "note \"Architecture Diagram Generation Failed\\n\\nError: No chat model configured\\n\\nPlease check the logs for more details.\" as ErrorNote",
+      "",
+      "@enduml"
+    ],
+    "sonar-project.properties": [
+      "sonar.exclusions=**/*_test.go, fuzz/**, integrationTests/**, mock/**, scenario/**, testcommon/**",
+      ""
+    ]
+  },
+  "importantFolders": [
+    {
+      "path": "cmd/scenariostest",
+      "category": "tests",
+      "fileCount": 2,
+      "primaryLanguage": "Go"
+    },
+    {
+      "path": "cmd/testgen",
+      "category": "tests",
+      "fileCount": 2,
+      "primaryLanguage": "Go"
+    },
+    {
+      "path": "config",
+      "category": "config",
+      "fileCount": 4,
+      "primaryLanguage": "Go"
+    },
+    {
+      "path": "executor/wrapper",
+      "category": "frontend",
+      "fileCount": 5,
+      "primaryLanguage": "Go"
+    },
+    {
+      "path": "integrationTests",
+      "category": "tests",
+      "fileCount": 9,
+      "primaryLanguage": "Go"
+    },
+    {
+      "path": "scenario/gasSchedules/scripts",
+      "category": "scripts",
+      "fileCount": 1,
+      "primaryLanguage": "Go"
+    },
+    {
+      "path": "test",
+      "category": "tests",
+      "fileCount": 1566,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/adder/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/async/async-alice/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/async/async-bob/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/attestation-c",
+      "category": "tests",
+      "fileCount": 7
+    },
+    {
+      "path": "test/attestation-rust",
+      "category": "tests",
+      "fileCount": 6
+    },
+    {
+      "path": "test/attestation-rust/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/aggregator/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/aggregator/tests",
+      "category": "tests",
+      "fileCount": 3,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/answer/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/answer-locals/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/asset-manager/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/asset-manager/tests",
+      "category": "tests",
+      "fileCount": 7,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/async-call-builtin",
+      "category": "frontend",
+      "fileCount": 4,
+      "primaryLanguage": "C"
+    },
+    {
+      "path": "test/contracts/async-call-builtin/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/async-call-child/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/async-call-child-managed/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/async-call-parent/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/async-call-parent-managed/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/async-promises-parent/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/atomic-swap/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/atomic-swap/tests",
+      "category": "tests",
+      "fileCount": 3,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/attestation",
+      "category": "tests",
+      "fileCount": 21,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/attestation/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/attestation/tests",
+      "category": "tests",
+      "fileCount": 6,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/bad-empty/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/bad-extra/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/bad-misc/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/bad-recursive/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/baseOps/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/big-floats/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/big-floats-2/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/breakpoint/output",
+      "category": "build",
+      "fileCount": 3
+    },
+    {
+      "path": "test/contracts/buffer-pool/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/buffer-pool/tests",
+      "category": "tests",
+      "fileCount": 3,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/carbon-credit/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/carbon-credit/tests",
+      "category": "tests",
+      "fileCount": 3,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/come-settlement/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/come-settlement/tests",
+      "category": "tests",
+      "fileCount": 3,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/counter/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/deployer/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/deployer-child/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/deployer-fromanother-contract/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/deployer-parent/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/drwa-auth-admin/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/drwa-auth-admin/tests",
+      "category": "tests",
+      "fileCount": 3,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/erc20/output",
+      "category": "build",
+      "fileCount": 3
+    },
+    {
+      "path": "test/contracts/exchange/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-dest-ctx-builtin",
+      "category": "frontend",
+      "fileCount": 4,
+      "primaryLanguage": "C"
+    },
+    {
+      "path": "test/contracts/exec-dest-ctx-builtin/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-dest-ctx-by-caller/child/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-dest-ctx-by-caller/parent/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-dest-ctx-child/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-dest-ctx-esdt/basic/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-dest-ctx-parent/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-dest-ctx-recursive/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-dest-ctx-recursive-child/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-dest-ctx-recursive-parent/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-same-ctx-child/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-same-ctx-parent/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-same-ctx-recursive/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-same-ctx-recursive-child/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-same-ctx-recursive-parent/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-same-ctx-simple-child/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-same-ctx-simple-parent/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-sync-ctx-multiple/alpha/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-sync-ctx-multiple/beta/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-sync-ctx-multiple/delta/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/exec-sync-ctx-multiple/gamma/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/forbidden-opcodes/data-drop/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/forbidden-opcodes/memory-copy/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/forbidden-opcodes/memory-fill/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/forbidden-opcodes/memory-init/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/forbidden-opcodes/simd/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/governance/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/governance/tests",
+      "category": "tests",
+      "fileCount": 4,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/governance-multisig/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/governance-multisig/tests",
+      "category": "tests",
+      "fileCount": 3,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/gsoc-registry/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/gsoc-registry/tests",
+      "category": "tests",
+      "fileCount": 4,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/identity-registry/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/identity-registry/tests",
+      "category": "tests",
+      "fileCount": 6,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/income-distribution",
+      "category": "build",
+      "fileCount": 20,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/income-distribution/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/income-distribution/tests",
+      "category": "tests",
+      "fileCount": 5,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/init-correct/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/init-simple/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/init-simple-popcnt/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/init-wrong/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/managed-buffers/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/memgrow-wrong/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/misc/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/new-blockchain-hooks/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/num-with-fp/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/opcodes/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/pair/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/policy-registry/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/policy-registry/tests",
+      "category": "tests",
+      "fileCount": 7,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/promises/child-simple/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/promises/parent-simple/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/promises/three-contracts/first-contract/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/promises/three-contracts/second-contract/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/promises/three-contracts/third-contract/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/promises/tourist-bookings/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/promises/tourist-tracking/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/promises/tourist-train/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/registry/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/registry/tests",
+      "category": "tests",
+      "fileCount": 4,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/reserve-proof-registry/output",
+      "category": "build",
+      "fileCount": 4
+    },
+    {
+      "path": "test/contracts/reserve-proof-registry/tests",
+      "category": "tests",
+      "fileCount": 4,
+      "primaryLanguage": "Rust"
+    },
+    {
+      "path": "test/contracts/signatures/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/timelocks/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/transfer-with-return-error/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/upgrader-fromanother-contract/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/contracts/wasmbacking/imported-global/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/mem-content/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/mem-data-initializer/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/mem-exceeded-max-pages/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/mem-exceeded-pages/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/mem-grow/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/mem-min-pages-greater-than-max-pages/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/mem-multiple-max-pages/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/mem-multiple-pages/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/mem-no-max-pages/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/mem-no-pages/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/mem-single-page/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/memoryless/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/middleware-globals/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/multiple-memories/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/multiple-mutable/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/noglobals/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/single-immutable/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/contracts/wasmbacking/single-mutable/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/crowdfunding-esdt/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/delegation/auction-mock/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/delegation/v0_3/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/delegation/v0_3/test",
+      "category": "tests",
+      "fileCount": 49
+    },
+    {
+      "path": "test/delegation/v0_4_genesis/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/delegation/v0_4_genesis/test",
+      "category": "tests",
+      "fileCount": 13
+    },
+    {
+      "path": "test/delegation/v0_5_latest",
+      "category": "tests",
+      "fileCount": 40
+    },
+    {
+      "path": "test/delegation/v0_5_latest/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/digital-cash/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/dns/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/erc20-rust/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/esdt-nft-marketplace/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/factorial/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/alloc-features/output",
+      "category": "build",
+      "fileCount": 3
+    },
+    {
+      "path": "test/features/barnard-features/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/basic-features/output",
+      "category": "build",
+      "fileCount": 3
+    },
+    {
+      "path": "test/features/basic-features-ei-1-3/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/features/basic-features-legacy/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/basic-features-no-small-int-api",
+      "category": "backend",
+      "fileCount": 20
+    },
+    {
+      "path": "test/features/basic-features-no-small-int-api/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/big-float-features/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/composability/builtin-func-features",
+      "category": "frontend",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/composability/builtin-func-features/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/composability/forwarder/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/composability/forwarder-barnard/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/composability/forwarder-queue/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/features/composability/forwarder-raw/output",
+      "category": "build",
+      "fileCount": 3
+    },
+    {
+      "path": "test/features/composability/promises-features/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/composability/proxy-test-first",
+      "category": "tests",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/composability/proxy-test-first/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/composability/proxy-test-second",
+      "category": "tests",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/composability/proxy-test-second/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/composability/recursive-caller/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/composability/vault/output",
+      "category": "build",
+      "fileCount": 3
+    },
+    {
+      "path": "test/features/esdt-system-sc-mock/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/formatted-message-features/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/managed-map-benchmark/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/managed-map-features/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/features/payable-features/output",
+      "category": "build",
+      "fileCount": 2
+    },
+    {
+      "path": "test/multisig/output",
+      "category": "build",
+      "fileCount": 3
+    },
+    {
+      "path": "test/multisig/test-contracts",
+      "category": "tests",
+      "fileCount": 2
+    },
+    {
+      "path": "test/paymaster/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/ping-pong-egld/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "test/wegld-swap/output",
+      "category": "build",
+      "fileCount": 1
+    },
+    {
+      "path": "testcommon",
+      "category": "tests",
+      "fileCount": 17,
+      "primaryLanguage": "Go"
+    },
+    {
+      "path": "testcommon/testexecutor",
+      "category": "tests",
+      "fileCount": 1,
+      "primaryLanguage": "Go"
+    },
+    {
+      "path": "vmhost/hostCore",
+      "category": "core",
+      "fileCount": 6,
+      "primaryLanguage": "Go"
+    },
+    {
+      "path": "vmhost/hosttest",
+      "category": "tests",
+      "fileCount": 19,
+      "primaryLanguage": "Go"
+    },
+    {
+      "path": "vmhost/hosttest/panictests",
+      "category": "tests",
+      "fileCount": 1,
+      "primaryLanguage": "Go"
+    },
+    {
+      "path": "vmhost/hosttest/tools",
+      "category": "scripts",
+      "fileCount": 1,
+      "primaryLanguage": "Go"
+    },
+    {
+      "path": "vmhost/vmhookstest",
+      "category": "tests",
+      "fileCount": 4,
+      "primaryLanguage": "Go"
+    }
+  ],
+  "readmeParagraphs": {
+    "vmhost/vmhooks/generate/cmd": "# VM Hooks Code generator",
+    "root": "# wasm-vm"
+  },
+  "totals": {
+    "numFiles": 1871,
+    "numDirs": 554,
+    "totalSizeBytes": 36712830,
+    "totalLinesOfCode": 136892
+  },
+  "fileCategories": {
+    "config": 1128,
+    "other": 227,
+    "build": 20,
+    "documentation": 5,
+    "source": 486,
+    "test": 5
+  },
+  "linesOfCodePerLanguage": {
+    "Go": 88206,
+    "Rust": 42898,
+    "C": 3820,
+    "Shell": 18,
+    "C/C++": 1773,
+    "C++": 177
+  },
+  "filesPerLanguage": {
+    "Go": 270,
+    "Rust": 150,
+    "C": 55,
+    "Shell": 1,
+    "C/C++": 8,
+    "C++": 2
+  },
+  "projectTypes": [
+    "Rust (Cargo)",
+    "Go (Modules)"
+  ],
+  "frameworks": [],
+  "entryPoints": [],
+  "ciCdTools": [
+    "GitHub Actions"
+  ],
+  "packageManagers": [
+    "go mod"
+  ],
+  "topLevelDirectories": [
+    {
+      "name": "vmhost",
+      "numFiles": 124,
+      "totalLoc": 53393,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "test",
+      "numFiles": 1566,
+      "totalLoc": 47609,
+      "dominantLanguage": "Rust"
+    },
+    {
+      "name": "testcommon",
+      "numFiles": 17,
+      "totalLoc": 7602,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "fuzz",
+      "numFiles": 38,
+      "totalLoc": 6305,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "wasmer2",
+      "numFiles": 24,
+      "totalLoc": 5777,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "mock",
+      "numFiles": 32,
+      "totalLoc": 5598,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "executor",
+      "numFiles": 13,
+      "totalLoc": 4003,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "scenario",
+      "numFiles": 7,
+      "totalLoc": 1908,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "config",
+      "numFiles": 4,
+      "totalLoc": 1571,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "integrationTests",
+      "numFiles": 9,
+      "totalLoc": 1479,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "math",
+      "numFiles": 10,
+      "totalLoc": 744,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "crypto",
+      "numFiles": 9,
+      "totalLoc": 711,
+      "dominantLanguage": "Go"
+    },
+    {
+      "name": "cmd",
+      "numFiles": 4,
+      "totalLoc": 192,
+      "dominantLanguage": "Go"
+    }
+  ],
+  "detailedDirectories": [
+    {
+      "path": "vmhost",
+      "name": "vmhost",
+      "level": 1,
+      "numFiles": 124,
+      "totalLoc": 53393,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 124 files (Go)",
+      "subdirectories": [
+        {
+          "path": "vmhost/contexts",
+          "name": "contexts",
+          "level": 2,
+          "numFiles": 30,
+          "totalLoc": 16970,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 30 files (Go)",
+          "subdirectories": []
+        },
+        {
+          "path": "vmhost/vmhooks",
+          "name": "vmhooks",
+          "level": 2,
+          "numFiles": 48,
+          "totalLoc": 14767,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 48 files (Go)",
+          "subdirectories": [
+            {
+              "path": "vmhost/vmhooks/generate",
+              "name": "generate",
+              "level": 3,
+              "numFiles": 32,
+              "totalLoc": 2000,
+              "dominantLanguage": "Go",
+              "category": "General",
+              "description": "General module with 32 files (Go)",
+              "subdirectories": []
+            }
+          ]
+        },
+        {
+          "path": "vmhost/hosttest",
+          "name": "hosttest",
+          "level": 2,
+          "numFiles": 19,
+          "totalLoc": 13545,
+          "dominantLanguage": "Go",
+          "category": "Testing",
+          "description": "Testing module with 19 files (Go)",
+          "subdirectories": [
+            {
+              "path": "vmhost/hosttest/panictests",
+              "name": "panictests",
+              "level": 3,
+              "numFiles": 1,
+              "totalLoc": 218,
+              "dominantLanguage": "Go",
+              "category": "Testing",
+              "description": "Testing module with 1 files (Go)",
+              "subdirectories": []
+            },
+            {
+              "path": "vmhost/hosttest/tools",
+              "name": "tools",
+              "level": 3,
+              "numFiles": 1,
+              "totalLoc": 33,
+              "dominantLanguage": "Go",
+              "category": "Tools/Scripts",
+              "description": "Tools/Scripts module with 1 files (Go)",
+              "subdirectories": []
+            }
+          ]
+        },
+        {
+          "path": "vmhost/hostCore",
+          "name": "hostCore",
+          "level": 2,
+          "numFiles": 6,
+          "totalLoc": 2332,
+          "dominantLanguage": "Go",
+          "category": "Core/Business",
+          "description": "Core/Business module with 6 files (Go)",
+          "subdirectories": []
+        },
+        {
+          "path": "vmhost/mock",
+          "name": "mock",
+          "level": 2,
+          "numFiles": 4,
+          "totalLoc": 560,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 4 files (Go)",
+          "subdirectories": []
+        }
+      ]
+    },
+    {
+      "path": "test",
+      "name": "test",
+      "level": 1,
+      "numFiles": 1566,
+      "totalLoc": 47609,
+      "dominantLanguage": "Rust",
+      "category": "Testing",
+      "description": "Testing module with 1566 files (Rust)",
+      "subdirectories": [
+        {
+          "path": "test/contracts",
+          "name": "contracts",
+          "level": 2,
+          "numFiles": 622,
+          "totalLoc": 47609,
+          "dominantLanguage": "Rust",
+          "category": "General",
+          "description": "General module with 622 files (Rust)",
+          "subdirectories": [
+            {
+              "path": "test/contracts/aggregator",
+              "name": "aggregator",
+              "level": 3,
+              "numFiles": 17,
+              "totalLoc": 3898,
+              "dominantLanguage": "Rust",
+              "category": "General",
+              "description": "General module with 17 files (Rust)",
+              "subdirectories": []
+            },
+            {
+              "path": "test/contracts/asset-manager",
+              "name": "asset-manager",
+              "level": 3,
+              "numFiles": 22,
+              "totalLoc": 3341,
+              "dominantLanguage": "Rust",
+              "category": "General",
+              "description": "General module with 22 files (Rust)",
+              "subdirectories": []
+            },
+            {
+              "path": "test/contracts/async-call-builtin",
+              "name": "async-call-builtin",
+              "level": 3,
+              "numFiles": 4,
+              "totalLoc": 23,
+              "dominantLanguage": "C",
+              "category": "Web/UI",
+              "description": "Web/UI module with 4 files (C)",
+              "subdirectories": []
+            },
+            {
+              "path": "test/contracts/answer",
+              "name": "answer",
+              "level": 3,
+              "numFiles": 4,
+              "totalLoc": 8,
+              "dominantLanguage": "C",
+              "category": "General",
+              "description": "General module with 4 files (C)",
+              "subdirectories": []
+            },
+            {
+              "path": "test/contracts/answer-locals",
+              "name": "answer-locals",
+              "level": 3,
+              "numFiles": 2,
+              "totalLoc": 0,
+              "category": "General",
+              "description": "General module with 2 files",
+              "subdirectories": []
+            }
+          ]
+        },
+        {
+          "path": "test/async",
+          "name": "async",
+          "level": 2,
+          "numFiles": 26,
+          "totalLoc": 0,
+          "category": "General",
+          "description": "General module with 26 files",
+          "subdirectories": [
+            {
+              "path": "test/async/scenarios",
+              "name": "scenarios",
+              "level": 3,
+              "numFiles": 24,
+              "totalLoc": 0,
+              "category": "General",
+              "description": "General module with 24 files",
+              "subdirectories": []
+            },
+            {
+              "path": "test/async/async-alice",
+              "name": "async-alice",
+              "level": 3,
+              "numFiles": 1,
+              "totalLoc": 0,
+              "category": "General",
+              "description": "General module with 1 files",
+              "subdirectories": []
+            },
+            {
+              "path": "test/async/async-bob",
+              "name": "async-bob",
+              "level": 3,
+              "numFiles": 1,
+              "totalLoc": 0,
+              "category": "General",
+              "description": "General module with 1 files",
+              "subdirectories": []
+            }
+          ]
+        },
+        {
+          "path": "test/attestation-c",
+          "name": "attestation-c",
+          "level": 2,
+          "numFiles": 7,
+          "totalLoc": 0,
+          "category": "Testing",
+          "description": "Testing module with 7 files",
+          "subdirectories": []
+        },
+        {
+          "path": "test/attestation-rust",
+          "name": "attestation-rust",
+          "level": 2,
+          "numFiles": 6,
+          "totalLoc": 0,
+          "category": "Testing",
+          "description": "Testing module with 6 files",
+          "subdirectories": [
+            {
+              "path": "test/attestation-rust/scenarios",
+              "name": "scenarios",
+              "level": 3,
+              "numFiles": 5,
+              "totalLoc": 0,
+              "category": "General",
+              "description": "General module with 5 files",
+              "subdirectories": []
+            },
+            {
+              "path": "test/attestation-rust/output",
+              "name": "output",
+              "level": 3,
+              "numFiles": 1,
+              "totalLoc": 0,
+              "category": "General",
+              "description": "General module with 1 files",
+              "subdirectories": []
+            }
+          ]
+        },
+        {
+          "path": "test/adder",
+          "name": "adder",
+          "level": 2,
+          "numFiles": 3,
+          "totalLoc": 0,
+          "category": "General",
+          "description": "General module with 3 files",
+          "subdirectories": [
+            {
+              "path": "test/adder/scenarios",
+              "name": "scenarios",
+              "level": 3,
+              "numFiles": 2,
+              "totalLoc": 0,
+              "category": "General",
+              "description": "General module with 2 files",
+              "subdirectories": []
+            },
+            {
+              "path": "test/adder/output",
+              "name": "output",
+              "level": 3,
+              "numFiles": 1,
+              "totalLoc": 0,
+              "category": "General",
+              "description": "General module with 1 files",
+              "subdirectories": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "testcommon",
+      "name": "testcommon",
+      "level": 1,
+      "numFiles": 17,
+      "totalLoc": 7602,
+      "dominantLanguage": "Go",
+      "category": "Infrastructure",
+      "description": "Infrastructure module with 17 files (Go)",
+      "subdirectories": [
+        {
+          "path": "testcommon/testexecutor",
+          "name": "testexecutor",
+          "level": 2,
+          "numFiles": 1,
+          "totalLoc": 46,
+          "dominantLanguage": "Go",
+          "category": "Testing",
+          "description": "Testing module with 1 files (Go)",
+          "subdirectories": []
+        }
+      ]
+    },
+    {
+      "path": "fuzz",
+      "name": "fuzz",
+      "level": 1,
+      "numFiles": 38,
+      "totalLoc": 6305,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 38 files (Go)",
+      "subdirectories": [
+        {
+          "path": "fuzz/delegation",
+          "name": "delegation",
+          "level": 2,
+          "numFiles": 20,
+          "totalLoc": 4168,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 20 files (Go)",
+          "subdirectories": [
+            {
+              "path": "fuzz/delegation/v0.5",
+              "name": "v0.5",
+              "level": 3,
+              "numFiles": 8,
+              "totalLoc": 1543,
+              "dominantLanguage": "Go",
+              "category": "General",
+              "description": "General module with 8 files (Go)",
+              "subdirectories": []
+            },
+            {
+              "path": "fuzz/delegation/v0.3",
+              "name": "v0.3",
+              "level": 3,
+              "numFiles": 6,
+              "totalLoc": 1313,
+              "dominantLanguage": "Go",
+              "category": "General",
+              "description": "General module with 6 files (Go)",
+              "subdirectories": []
+            },
+            {
+              "path": "fuzz/delegation/v0.4",
+              "name": "v0.4",
+              "level": 3,
+              "numFiles": 6,
+              "totalLoc": 1312,
+              "dominantLanguage": "Go",
+              "category": "General",
+              "description": "General module with 6 files (Go)",
+              "subdirectories": []
+            }
+          ]
+        },
+        {
+          "path": "fuzz/dex",
+          "name": "dex",
+          "level": 2,
+          "numFiles": 15,
+          "totalLoc": 2066,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 15 files (Go)",
+          "subdirectories": [
+            {
+              "path": "fuzz/dex/v0.1",
+              "name": "v0.1",
+              "level": 3,
+              "numFiles": 15,
+              "totalLoc": 2066,
+              "dominantLanguage": "Go",
+              "category": "General",
+              "description": "General module with 15 files (Go)",
+              "subdirectories": []
+            }
+          ]
+        },
+        {
+          "path": "fuzz/util",
+          "name": "util",
+          "level": 2,
+          "numFiles": 1,
+          "totalLoc": 37,
+          "dominantLanguage": "Go",
+          "category": "Tools/Scripts",
+          "description": "Tools/Scripts module with 1 files (Go)",
+          "subdirectories": []
+        },
+        {
+          "path": "fuzz/weightedroulette",
+          "name": "weightedroulette",
+          "level": 2,
+          "numFiles": 1,
+          "totalLoc": 34,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 1 files (Go)",
+          "subdirectories": []
+        }
+      ]
+    },
+    {
+      "path": "wasmer2",
+      "name": "wasmer2",
+      "level": 1,
+      "numFiles": 24,
+      "totalLoc": 5777,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 24 files (Go)",
+      "subdirectories": []
+    },
+    {
+      "path": "mock",
+      "name": "mock",
+      "level": 1,
+      "numFiles": 32,
+      "totalLoc": 5598,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 32 files (Go)",
+      "subdirectories": [
+        {
+          "path": "mock/context",
+          "name": "context",
+          "level": 2,
+          "numFiles": 14,
+          "totalLoc": 3597,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 14 files (Go)",
+          "subdirectories": []
+        },
+        {
+          "path": "mock/contracts",
+          "name": "contracts",
+          "level": 2,
+          "numFiles": 18,
+          "totalLoc": 2001,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 18 files (Go)",
+          "subdirectories": []
+        }
+      ]
+    },
+    {
+      "path": "executor",
+      "name": "executor",
+      "level": 1,
+      "numFiles": 13,
+      "totalLoc": 4003,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 13 files (Go)",
+      "subdirectories": [
+        {
+          "path": "executor/wrapper",
+          "name": "wrapper",
+          "level": 2,
+          "numFiles": 5,
+          "totalLoc": 2826,
+          "dominantLanguage": "Go",
+          "category": "Application",
+          "description": "Application module with 5 files (Go)",
+          "subdirectories": []
+        }
+      ]
+    },
+    {
+      "path": "scenario",
+      "name": "scenario",
+      "level": 1,
+      "numFiles": 7,
+      "totalLoc": 1908,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 7 files (Go)",
+      "subdirectories": [
+        {
+          "path": "scenario/gasSchedules",
+          "name": "gasSchedules",
+          "level": 2,
+          "numFiles": 6,
+          "totalLoc": 1801,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 6 files (Go)",
+          "subdirectories": [
+            {
+              "path": "scenario/gasSchedules/scripts",
+              "name": "scripts",
+              "level": 3,
+              "numFiles": 1,
+              "totalLoc": 36,
+              "dominantLanguage": "Go",
+              "category": "Tools/Scripts",
+              "description": "Tools/Scripts module with 1 files (Go)",
+              "subdirectories": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "config",
+      "name": "config",
+      "level": 1,
+      "numFiles": 4,
+      "totalLoc": 1571,
+      "dominantLanguage": "Go",
+      "category": "Configuration",
+      "description": "Configuration module with 4 files (Go)",
+      "subdirectories": []
+    },
+    {
+      "path": "integrationTests",
+      "name": "integrationTests",
+      "level": 1,
+      "numFiles": 9,
+      "totalLoc": 1479,
+      "dominantLanguage": "Go",
+      "category": "Testing",
+      "description": "Testing module with 9 files (Go)",
+      "subdirectories": [
+        {
+          "path": "integrationTests/json",
+          "name": "json",
+          "level": 2,
+          "numFiles": 7,
+          "totalLoc": 857,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 7 files (Go)",
+          "subdirectories": []
+        },
+        {
+          "path": "integrationTests/features",
+          "name": "features",
+          "level": 2,
+          "numFiles": 2,
+          "totalLoc": 622,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 2 files (Go)",
+          "subdirectories": []
+        }
+      ]
+    },
+    {
+      "path": "math",
+      "name": "math",
+      "level": 1,
+      "numFiles": 10,
+      "totalLoc": 744,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 10 files (Go)",
+      "subdirectories": []
+    },
+    {
+      "path": "crypto",
+      "name": "crypto",
+      "level": 1,
+      "numFiles": 9,
+      "totalLoc": 711,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 9 files (Go)",
+      "subdirectories": [
+        {
+          "path": "crypto/signing",
+          "name": "signing",
+          "level": 2,
+          "numFiles": 6,
+          "totalLoc": 586,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 6 files (Go)",
+          "subdirectories": [
+            {
+              "path": "crypto/signing/secp256",
+              "name": "secp256",
+              "level": 3,
+              "numFiles": 2,
+              "totalLoc": 338,
+              "dominantLanguage": "Go",
+              "category": "General",
+              "description": "General module with 2 files (Go)",
+              "subdirectories": []
+            },
+            {
+              "path": "crypto/signing/bls",
+              "name": "bls",
+              "level": 3,
+              "numFiles": 2,
+              "totalLoc": 203,
+              "dominantLanguage": "Go",
+              "category": "General",
+              "description": "General module with 2 files (Go)",
+              "subdirectories": []
+            },
+            {
+              "path": "crypto/signing/ed25519",
+              "name": "ed25519",
+              "level": 3,
+              "numFiles": 1,
+              "totalLoc": 30,
+              "dominantLanguage": "Go",
+              "category": "General",
+              "description": "General module with 1 files (Go)",
+              "subdirectories": []
+            }
+          ]
+        },
+        {
+          "path": "crypto/hashing",
+          "name": "hashing",
+          "level": 2,
+          "numFiles": 1,
+          "totalLoc": 54,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 1 files (Go)",
+          "subdirectories": []
+        },
+        {
+          "path": "crypto/factory",
+          "name": "factory",
+          "level": 2,
+          "numFiles": 1,
+          "totalLoc": 35,
+          "dominantLanguage": "Go",
+          "category": "General",
+          "description": "General module with 1 files (Go)",
+          "subdirectories": []
+        }
+      ]
+    },
+    {
+      "path": "cmd",
+      "name": "cmd",
+      "level": 1,
+      "numFiles": 4,
+      "totalLoc": 192,
+      "dominantLanguage": "Go",
+      "category": "General",
+      "description": "General module with 4 files (Go)",
+      "subdirectories": [
+        {
+          "path": "cmd/testgen",
+          "name": "testgen",
+          "level": 2,
+          "numFiles": 2,
+          "totalLoc": 140,
+          "dominantLanguage": "Go",
+          "category": "Testing",
+          "description": "Testing module with 2 files (Go)",
+          "subdirectories": [
+            {
+              "path": "cmd/testgen/dns",
+              "name": "dns",
+              "level": 3,
+              "numFiles": 2,
+              "totalLoc": 140,
+              "dominantLanguage": "Go",
+              "category": "General",
+              "description": "General module with 2 files (Go)",
+              "subdirectories": []
+            }
+          ]
+        },
+        {
+          "path": "cmd/scenariostest",
+          "name": "scenariostest",
+          "level": 2,
+          "numFiles": 2,
+          "totalLoc": 52,
+          "dominantLanguage": "Go",
+          "category": "Testing",
+          "description": "Testing module with 2 files (Go)",
+          "subdirectories": []
+        }
+      ]
+    }
+  ],
+  "architecturalInsights": {
+    "coreApplications": [],
+    "entryPointDetails": [],
+    "serviceArchitecture": {
+      "microservices": [],
+      "monoliths": [],
+      "libraries": [
+        "testcommon"
+      ]
+    },
+    "layeredArchitecture": {
+      "presentation": [],
+      "business": [],
+      "data": [],
+      "infrastructure": [
+        "testcommon"
+      ]
+    }
+  },
+  "largeFiles": [
+    {
+      "path": "wasmer2/libvmexeccapi_arm.so",
+      "sizeMb": 5.82
+    },
+    {
+      "path": "wasmer2/libvmexeccapi.so",
+      "sizeMb": 5.81
+    },
+    {
+      "path": "wasmer2/libvmexeccapi.dylib",
+      "sizeMb": 5.2
+    },
+    {
+      "path": "wasmer2/libvmexeccapi_arm.dylib",
+      "sizeMb": 5.01
+    }
+  ],
+  "dependencies": {
+    "production": [],
+    "development": [],
+    "total": 0
+  },
+  "complexity": {
+    "averageFileSize": 73.16515232495992,
+    "maxFileSize": 61027.1232,
+    "nestedDepth": 0,
+    "estimatedComplexity": "very high"
+  },
+  "gitRepo": {
+    "firstCommitDate": "2026-05-15",
+    "totalCommits": 5,
+    "numContributors": 0,
+    "currentBranch": "main",
+    "remoteUrls": [
+      "https://github.com/Shambhavigantla/mx-chain-vm-go.git"
+    ]
+  },
+  "license": "MIT"
+}

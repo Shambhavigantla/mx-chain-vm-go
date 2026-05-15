@@ -134,3 +134,38 @@ func TestMultiESDTTransferWithReturnError(t *testing.T) {
 		Run().
 		CheckNoError()
 }
+
+func TestAssetManager(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/asset-manager/scenarios").
+		Run().
+		CheckNoError()
+}
+
+func TestAttestation(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/attestation/scenarios").
+		Run().
+		CheckNoError()
+}
+
+func TestDrwaAuthAdmin(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/drwa-auth-admin/scenarios").
+		Run().
+		CheckNoError()
+}
+
+func TestIdentityRegistry(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/identity-registry/scenarios").
+		Run().
+		CheckNoError()
+}
+
+func TestPolicyRegistry(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/policy-registry/scenarios").
+		Run().
+		CheckNoError()
+}
