@@ -241,10 +241,13 @@ func TestManagedDRWASyncMirror_OversizedField_Reverts(t *testing.T) {
 }
 
 func buildValidDRWASyncPayload(numOps int) []byte {
-	payload := make([]byte, 33)
+	payload := make([]byte, 35)
 	for i := 0; i < 32; i++ {
 		payload[i] = byte(i + 1)
 	}
+	payload[32] = 0x00
+	payload[33] = 0x01 // Schema Version: 1
+	payload[34] = 0x01 // Caller Tag: AssetManager
 	for i := 0; i < numOps; i++ {
 		payload = append(payload, byte(i%3))
 		payload = appendLenPrefixed(payload, []byte("TOKEN-123"))
@@ -257,8 +260,10 @@ func buildValidDRWASyncPayload(numOps int) []byte {
 }
 
 func buildZeroHashDRWASyncPayload() []byte {
-	payload := make([]byte, 33)
-	payload[32] = 0x01
+	payload := make([]byte, 35)
+	payload[32] = 0x00
+	payload[33] = 0x01 // Schema Version: 1
+	payload[34] = 0x01 // Caller Tag: AssetManager
 	payload = appendLenPrefixed(payload, []byte("TOKEN-123"))
 	payload = appendLenPrefixed(payload, []byte("erd1holder"))
 	payload = append(payload, 0, 0, 0, 0, 0, 0, 0, 1)
@@ -267,14 +272,20 @@ func buildZeroHashDRWASyncPayload() []byte {
 }
 
 func buildMalformedDRWASyncPayload() []byte {
-	payload := make([]byte, 33)
+	payload := make([]byte, 35)
+	payload[32] = 0x00
+	payload[33] = 0x01
+	payload[34] = 0x01
 	payload = append(payload, 0x01)
 	payload = append(payload, 0, 0, 0, 5, 'b', 'a')
 	return payload
 }
 
 func buildOversizedFieldDRWASyncPayload() []byte {
-	payload := make([]byte, 33)
+	payload := make([]byte, 35)
+	payload[32] = 0x00
+	payload[33] = 0x01
+	payload[34] = 0x01
 	payload = append(payload, 0x01)
 	payload = appendLenPrefixed(payload, bytesOfLen(drwaSyncFieldLenCapForTests+1))
 	payload = appendLenPrefixed(payload, []byte("erd1holder"))

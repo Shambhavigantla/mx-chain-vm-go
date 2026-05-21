@@ -5,6 +5,7 @@
   "bigIntSetInt64",
   "checkNoPayment",
   "cleanReturnData",
+  "finish",
   "getBlockRound",
   "getBlockTimestamp",
   "getGasLeft",

@@ -1,5 +1,6 @@
 [
   "checkNoPayment",
+  "finish",
   "getBlockRound",
   "getNumArguments",
   "mBufferAppend",

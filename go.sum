@@ -1,3 +1,5 @@
+github.com/Shanmugavardhan/mx-chain-scenario-go v0.0.0-20260518100235-3cae32784250 h1:OUR0swKzlnI4u/uqNS9Bc0d7Z0WSi/vUzsNRGL9Tm8E=
+github.com/Shanmugavardhan/mx-chain-scenario-go v0.0.0-20260518100235-3cae32784250/go.mod h1:evoO6OSEm8ueAxpl7uyTNMXFsZEHLXWqm8Bucxn5S5Q=
 github.com/TwiN/go-color v1.1.0 h1:yhLAHgjp2iAxmNjDiVb6Z073NE65yoaPlcki1Q22yyQ=
 github.com/TwiN/go-color v1.1.0/go.mod h1:aKVf4e1mD4ai2FtPifkDPP5iyoCwiK08YGzGwerjKo0=
 github.com/aead/siphash v1.0.1/go.mod h1:Nywa3cDsYNNK3gaciGTWPwHt0wlpNV15vwmswBAUSII=
@@ -81,8 +83,6 @@ github.com/mangonui/mx-chain-crypto-go v0.0.0-20260514040232-ceb6e91f2138 h1:kfk
 github.com/mangonui/mx-chain-crypto-go v0.0.0-20260514040232-ceb6e91f2138/go.mod h1:3lMat+rWrWM2+nZQsyuWKxMo4Vf8jZOL1DwHzQ/nSvE=
 github.com/mangonui/mx-chain-logger-go v0.0.0-20260514040119-0a9c9ca2e4eb h1:FzR5XJdtQHB3ftLtJ3wo50SR7HqkfHwvK9/1aX97q/M=
 github.com/mangonui/mx-chain-logger-go v0.0.0-20260514040119-0a9c9ca2e4eb/go.mod h1:zgnhQMWFDkMuT3wlUQDI7Q8K/Pa6mMeRFgtaD5Pn4u0=
-github.com/mangonui/mx-chain-scenario-go v0.0.0-20260512030057-3dc392175174 h1:7dx3NjnWKNmrc9kWs/MxBAfrfYNDOFpgGRep0XyzyOM=
-github.com/mangonui/mx-chain-scenario-go v0.0.0-20260512030057-3dc392175174/go.mod h1:itdU8Dj/gTcsupmVrpXS29TXzl9cXIBTDS+jWUkP2mU=
 github.com/mangonui/mx-chain-storage-go v0.0.0-20260514040357-ab466093f27c h1:slfWRCa15u5p4hG2/s58mWf+Ot70uoULBWkA9SMLtLk=
 github.com/mangonui/mx-chain-storage-go v0.0.0-20260514040357-ab466093f27c/go.mod h1:rNbhMi8AMn8bS7P3tn4NsFksuGoRCFI1FORGi+NcM08=
 github.com/mangonui/mx-chain-vm-common-go v0.0.0-20260512042020-b605c960cbd0 h1:BLvHryA3L5eyNTuz/TPXnu8VKz0adscS+iuys6aYzoI=

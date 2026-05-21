@@ -1829,58 +1829,125 @@ func hasZeroDRWASyncHashPrefix(payload []byte) bool {
 }
 
 // countDRWASyncOperations counts the number of sync operations encoded in a
-// binary DRWA sync payload ([32-byte hash] || [caller_tag] || ops...).
-// It walks the canonical serialization format:
-//
-//	[op_tag u8] [token_id: u32-len-prefixed] [holder: u32-len-prefixed] [version u64] [body: u32-len-prefixed]
+// binary DRWA sync payload ([32-byte hash] || [2-byte schema_version] || [1-byte caller_tag] || ops...).
 func countDRWASyncOperations(payload []byte) (int, bool) {
 	const hashLen = 32
+	const schemaVersionLen = 2
 	const callerTagLen = 1
-	const headerLen = hashLen + callerTagLen
+	const headerLen = hashLen + schemaVersionLen + callerTagLen
 
-	if len(payload) <= headerLen {
+	if len(payload) < headerLen {
 		return 0, true
 	}
 
+	schemaVersion := uint16(payload[32])<<8 | uint16(payload[33])
 	data := payload[headerLen:]
-	count := 0
-	for len(data) > 0 {
-		if count >= maxDRWASyncOps {
-			return 0, false
-		}
-		// op_tag (1 byte)
-		if len(data) < 1 {
-			return 0, false
-		}
-		data = data[1:]
 
-		// token_id: 4-byte length prefix + body
+	switch schemaVersion {
+	case 1:
+		count := 0
+		for len(data) > 0 {
+			if count >= maxDRWASyncOps {
+				return 0, false
+			}
+			// op_tag (1 byte)
+			if len(data) < 1 {
+				return 0, false
+			}
+			data = data[1:]
+
+			// token_id: 4-byte length prefix + body
+			var ok bool
+			data, ok = skipLenPrefixed(data)
+			if !ok {
+				return 0, false
+			}
+			// holder: 4-byte length prefix + body
+			data, ok = skipLenPrefixed(data)
+			if !ok {
+				return 0, false
+			}
+			// version: 8 bytes
+			if len(data) < 8 {
+				return 0, false
+			}
+			data = data[8:]
+			// body: 4-byte length prefix + body
+			data, ok = skipLenPrefixed(data)
+			if !ok {
+				return 0, false
+			}
+
+			count++
+		}
+		return count, true
+
+	case 2:
 		var ok bool
-		data, ok = skipLenPrefixed(data)
-		if !ok {
-			return 0, false
-		}
-		// holder: 4-byte length prefix + body
-		data, ok = skipLenPrefixed(data)
-		if !ok {
-			return 0, false
-		}
-		// version: 8 bytes
-		if len(data) < 8 {
-			return 0, false
-		}
-		data = data[8:]
-		// body: 4-byte length prefix + body
-		data, ok = skipLenPrefixed(data)
+		data, ok = skipLenPrefixed(data) // pre_recovery_state_hash
 		if !ok {
 			return 0, false
 		}
 
-		count++
+		if len(data) < 2 {
+			return 0, false
+		}
+		scopeLen := int(data[0])<<8 | int(data[1])
+		data = data[2:]
+
+		for i := 0; i < scopeLen; i++ {
+			data, ok = skipLenPrefixed(data)
+			if !ok {
+				return 0, false
+			}
+		}
+
+		if len(data) < 2 {
+			return 0, false
+		}
+		opsLen := int(data[0])<<8 | int(data[1])
+		data = data[2:]
+
+		if opsLen > maxDRWASyncOps {
+			return 0, false
+		}
+
+		count := 0
+		for i := 0; i < opsLen; i++ {
+			if len(data) < 1 {
+				return 0, false
+			}
+			data = data[1:] // op_tag
+
+			data, ok = skipLenPrefixed(data) // token_id
+			if !ok {
+				return 0, false
+			}
+			data, ok = skipLenPrefixed(data) // holder
+			if !ok {
+				return 0, false
+			}
+			if len(data) < 8 { // version
+				return 0, false
+			}
+			data = data[8:]
+			data, ok = skipLenPrefixed(data) // body
+			if !ok {
+				return 0, false
+			}
+			count++
+		}
+
+		if len(data) > 0 {
+			return 0, false
+		}
+		return count, true
+
+	default:
+		return 0, false
 	}
-
-	return count, true
 }
+
 
 func skipLenPrefixed(data []byte) ([]byte, bool) {
 	if len(data) < 4 {

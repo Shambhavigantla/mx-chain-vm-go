@@ -50,6 +50,6 @@ replace github.com/multiversx/mx-chain-storage-go => github.com/mangonui/mx-chai
 
 replace github.com/multiversx/mx-chain-vm-common-go => github.com/mangonui/mx-chain-vm-common-go v0.0.0-20260512042020-b605c960cbd0
 
-replace github.com/multiversx/mx-chain-scenario-go => github.com/mangonui/mx-chain-scenario-go v0.0.0-20260512030057-3dc392175174
+replace github.com/multiversx/mx-chain-scenario-go => github.com/Shanmugavardhan/mx-chain-scenario-go v0.0.0-20260518100235-3cae32784250
 
 replace github.com/multiversx/mx-components-big-int => github.com/mangonui/mx-components-big-int v0.0.0-20260507133911-536f4799b94f

@@ -169,3 +169,59 @@ func TestPolicyRegistry(t *testing.T) {
 		Run().
 		CheckNoError()
 }
+
+func TestBufferPool(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/buffer-pool/scenarios").
+		Run().
+		CheckNoError()
+}
+
+func TestCarbonCredit(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/carbon-credit/scenarios").
+		Run().
+		CheckNoError()
+}
+
+func TestComeSettlement(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/come-settlement/scenarios").
+		Run().
+		CheckNoError()
+}
+
+func TestGovernanceMultisig(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/governance-multisig/scenarios").
+		Run().
+		CheckNoError()
+}
+
+func TestGovernance(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/governance/scenarios").
+		Run().
+		CheckNoError()
+}
+
+func TestGSOCRegistry(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/gsoc-registry/scenarios").
+		Run().
+		CheckNoError()
+}
+
+func TestIncomeDistribution(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/income-distribution/scenarios").
+		Run().
+		CheckNoError()
+}
+
+func TestRegistry(t *testing.T) {
+	ScenariosTest(t).
+		Folder("contracts/registry/scenarios").
+		Run().
+		CheckNoError()
+}
